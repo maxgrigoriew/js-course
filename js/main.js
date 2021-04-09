@@ -1,30 +1,36 @@
-                            // lesson 02
-                            let money = 50000;
-let income = 'web development';
-let addExpenses = 'Продукты, Такси, Развлечения';
-let deposit = true;
-let mission = 100000;
-let period = 7;
+// lesson 03
 
-console.log(typeof income);
-console.log(typeof mission);
-console.log(typeof deposit);
-console.log(addExpenses.length);
-console.log('Период равен ' + period + ' месяцев');
-console.log(addExpenses.toLowerCase().split(', '));
+'use strict';
+let a = 5;
+console.log('a: ', a);
 
-let budgetDay = 60000;
-budgetDay /= 30;
-console.log(budgetDay);
+// let question = confirm('Тебе есть 18 лет?');
+// console.log(question);
 
-let str = 'hello my frends!';
+// let question2 = prompt('Сколько тебе лет?', '2');
+// console.log(typeof question2);
 
-console.log(str.length);
+console.log(5 + '5');
+console.log(5 == '5');
+console.log(!5);
 
-console.log(str.toUpperCase());
-console.log(str.toLowerCase());
-console.log(str[0]);
-console.log(str.substring(1, 15));
-console.log(str.slice(-112));
-console.log(str.split(' '));
-console.log(addExpenses.split(', '));
+console.log(typeof Number('34'))
+console.log(typeof + '20')
+
+console.log(parseFloat('10.5 px'))
+console.log(parseInt('10px'));
+
+
+let money = prompt('Ваш месячный доход?');
+console.log(money);
+
+let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
+
+let deposit = confirm('Есть ли у Вас депозит в банке');
+
+let expenses1 = promt('Введите обязательную статью расходов?');
+let expenses2 = promt('Введите обязательную статью расходов?');
+let expenses1 = promt('Во колько жто обойдется?');
+let expenses2 = promt('Во колько жто обойдется?');
+
+let budgetMonth =
