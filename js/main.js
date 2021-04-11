@@ -22,13 +22,13 @@ function getAccumulateMonth() {
     return money - getExpensesMonth();
 }
 
-console.log( getAccumulateMonth());
 console.log('Накопления за месяц составляют: ' + getAccumulateMonth());
 console.log("Ваш бюджет за месяц: " + getAccumulateMonth() + " " + " руб");
+
 function getTargetMonth() {
         return months
-    }
-getTargetMonth();
+}
+    
 console.log('Ваша цель будет достигнута через: ' + getTargetMonth() + ' месяцев(-а)');
 console.log('Ваш бюджет на день составляет:' + budgetDay + ' руб.');
 
@@ -49,9 +49,11 @@ let getStatusIncome = function () {
 getStatusIncome();
 console.log(getStatusIncome());
 
+
 let showTypeof = function (data) {
     console.log('data: ', typeof(data))
 }
+
 showTypeof(money);
 showTypeof(deposit);
 showTypeof(addExpenses);
