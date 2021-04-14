@@ -1,47 +1,45 @@
 "use strict"
 
+let money = +prompt('Ваш месячный доход, руб', '15000');
 
-let isNumber = function (n) {
-    return !isNaN(parseFloat(n)) && isFinite(n) ;
-  };
+console.log(typeof money);
+// let addExpenses = prompt('Перечислите Вашы возможные расходы за расчитываемый ериод через запятую. Пример: Квартплата, проездной, кредит');
+let deposit = confirm('Есть ли у Вас депозит в банке?');
 
-function guessNum () {
-    // let hiddenNum = Math.ceil(Math.random() * 100);
-    let hiddenNum = 55;
-    
-    console.log(hiddenNum);
-    
-    function guessNumInner () {
-        
-        let userNum = prompt('Угадай число от 1 до 100');
+console.log(deposit);
 
-        if (!isNumber(userNum) && userNum){
-            alert('Введи число!');
-            return guessNum();
-        }
-        
-        else if (!userNum) {
-            return alert('Игра окончена');
-        }
+let expenses1 = prompt('Введите обязательную статью расходов');
 
-        else if (userNum > hiddenNum) {
-            alert('Загаданное число меньше');
-            return guessNum();
-        }
-            
-        else if (userNum < hiddenNum) {
-        alert('Загаданное число больше');
-        return guessNum();
-        }
+let expenses2 = prompt('Введите обязательную статью расходов');
 
-        else if (hiddenNum == userNum) {
-            return alert('Поздравляю, Вы угадали!!!');
-        }
-        
-    }
+let amount1 = +prompt('Во сколько это обойдется?');
 
-    guessNumInner();
+let amount2 = +prompt('Во сколько это обойдется?');
 
-};
+let budgetMonth = money - amount1;
 
-guessNum();
+console.log("Ваш бюджет за месяц: " + budgetMonth + " " + " руб");
+
+let mission = +prompt('Какую сумму составляеть ваша цель?', '555000');
+
+let months = Math.floor(mission / budgetMonth);
+
+console.log('Ваша цель будет достигнута через: ' + months + ' месяцев(-а)');
+
+let budgetDay = Math.floor(budgetMonth / 30);
+
+// console.log(budgetDay);
+console.log('Ваш бюджет на день составляет:' + budgetDay + ' руб.');
+
+if (budgetDay >= 12000) {
+    console.log('У Вас высокий уровень дохода');
+}
+else if (budgetDay < 1200 && budgetDay > 600) {
+    console.log('У Вас средний уровень дохода');
+}
+else if (budgetDay < 600 && budgetDay >=0) {
+    console.log('У Вас средний уровень дохода');
+}
+else {
+    console.log('Что то пошло не так');
+}
