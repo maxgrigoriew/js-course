@@ -5,7 +5,7 @@ let money = +prompt('Ваш месячный доход, руб', '15000');
 
 let addExpenses = String(prompt('Перечислите Вашы возможные расходы за расчитываемый период через запятую. Пример: Квартплата, проездной, кредит'));
 
-addExpenses =  addExpenses.split(', ')
+addExpenses = addExpenses.split(', ');
 
 let deposit = confirm('Есть ли у Вас депозит в банке?');
 
@@ -36,27 +36,30 @@ let months = Math.floor(mission / accumulateMonth);
 let budgetDay = Math.floor(accumulateMonth / 30);
 
 let getTargetMonth = function(){
-    return Math.floor(accumulateMonth / 30);
+    return months;
 }
 
+let targetMonth = getTargetMonth();
 
-if (budgetDay >= 1200) {
+let getStatusIncome = function () {
+     
+     if (budgetDay >= 1200) {
     
-    console.log('У Вас высокий уровень дохода');
-}
-else if (budgetDay < 1200 && budgetDay > 600) {
+          console.log('У Вас высокий уровень дохода');
+     }
+     else if (budgetDay < 1200 && budgetDay > 600) {
     
-    console.log('У Вас средний уровень дохода');
-}
-else if (budgetDay < 600 && budgetDay >=0) {
+          console.log('У Вас средний уровень дохода');
+     }
+     else if (budgetDay < 600 && budgetDay >= 0) {
     
-    console.log('У Вас средний уровень дохода');
-}
-else {
-    console.log('Что то пошло не так');
+          console.log('У Вас средний уровень дохода');
+     }
+     else {
+          console.log('Что то пошло не так');
+     }
 }
 
-console.log(getExpensesMonth());
 
 console.log(deposit);
 
@@ -68,7 +71,7 @@ console.log(budgetDay);
 
 console.log("Ваш бюджет за месяц: " + expensesMonth + " " + " руб");
 
-console.log('Ваша цель будет достигнута через: ' + months + ' месяцев(-а)');
+console.log('Ваша цель будет достигнута через: ' + targetMonth + ' месяцев(-а)');
 
 console.log('Ваш бюджет на день составляет:' + budgetDay + ' руб.');
 
