@@ -9,6 +9,7 @@ let addExpenses = String(prompt('Перечислите Вашы возможн�
 
 addExpenses = addExpenses.split(', ');
 
+
 let deposit = confirm('Есть ли у Вас депозит в банке?');
 
 let mission = +prompt('Какую сумму составляеть ваша цель?', '100000');
@@ -20,10 +21,7 @@ let start = function () {
           money = prompt('Ваш месячный доход, руб');
      }
       
-     while (!isNumber(money)) {
-          money = prompt('Ваш месячный доход, руб');
-          
-     }
+     while (!isNumber(money));
 };
 
 start();
@@ -31,7 +29,7 @@ start();
 function getExpensesMonth() {
      let sum = 0;
      for (let i = 0; i < 2; i++) {
-    expenses[i] = prompt("Введите обязательную статью расходов?");
+      expenses[i] = prompt("Введите обязательную статью расходов?");
     do {
       sumExpense = prompt(" Во сколько это обойдется?");
       console.log(" Введите число");
@@ -61,10 +59,12 @@ let getTargetMonth = function () {
           return 'Ваша цель будет достигнута через: ' + purpose + ' месяцев(-а)';
      }
 }
+let budgetDay = Math.floor(accumulateMonth / 30);
 
 let targetMonth = getTargetMonth();
     
 let getStatusIncome = function () {
+     
     if (budgetDay >= 1200) {
         return ('У Вас высокий уровень дохода');
     }
