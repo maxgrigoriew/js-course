@@ -32,7 +32,6 @@ function getExpensesMonth() {
       expenses[i] = prompt("Введите обязательную статью расходов?");
     do {
       sumExpense = prompt(" Во сколько это обойдется?");
-      console.log(" Введите число");
     } while (!isNumber(sumExpense));
 
     sum += +sumExpense;
@@ -60,8 +59,6 @@ let getTargetMonth = function () {
      }
 }
 let budgetDay = Math.floor(accumulateMonth / 30);
-
-let targetMonth = getTargetMonth();
     
 let getStatusIncome = function () {
      
@@ -81,14 +78,13 @@ let getStatusIncome = function () {
 
 getStatusIncome();
 
-
 console.log('Сумма расходов за месяц составляет: ' + expensesMonth);
 
 console.log('Накопления за месяц составляют: ' + accumulateMonth);
 
 console.log("Ваш бюджет за месяц: " + accumulateMonth + " " + " руб");
 
-console.log(targetMonth);
+console.log(getTargetMonth());
 
 console.log('Ваш бюджет на день составляет:' + budgetDay + ' руб.');
 
@@ -98,10 +94,9 @@ let showTypeof = function (data) {
     console.log(data, typeof(data))
 }
 
+
 showTypeof(money);
+
 showTypeof(deposit);
+
 showTypeof(addExpenses);
-showTypeof(expenses2);
-showTypeof(amount1);
-showTypeof(expenses1);
-showTypeof(amount2);
