@@ -31,12 +31,10 @@ let getAccumulateMonth = function () {
 
 let accumulateMonth = getAccumulateMonth();
 
-let months = Math.floor(mission / accumulateMonth);
-
 let budgetDay = Math.floor(accumulateMonth / 30);
 
 let getTargetMonth = function(){
-    return months;
+    return Math.floor(mission / accumulateMonth);
 }
 
 let targetMonth = getTargetMonth();
@@ -64,8 +62,6 @@ let getStatusIncome = function () {
 console.log(deposit);
 
 console.log( addExpenses);
-
-console.log(typeof money);
 
 console.log(budgetDay);
 
