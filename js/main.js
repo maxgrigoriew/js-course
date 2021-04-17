@@ -5,6 +5,16 @@ let isNumber = function (n) {
 
 let money, sumExpense;
 
+let start = function () {
+     do {
+          money = prompt('Ваш месячный доход, руб');
+     }
+      
+     while (!isNumber(money));
+};
+
+start();
+
 let addExpenses = String(prompt('Перечислите Вашы возможные расходы за расчитываемый период через запятую. Пример: Квартплата, проездной, кредит'));
 
 addExpenses = addExpenses.split(', ');
@@ -15,16 +25,6 @@ let deposit = confirm('Есть ли у Вас депозит в банке?');
 let mission = +prompt('Какую сумму составляеть ваша цель?', '100000');
 
 let expenses = [];
-
-let start = function () {
-     do {
-          money = prompt('Ваш месячный доход, руб');
-     }
-      
-     while (!isNumber(money));
-};
-
-start();
 
 function getExpensesMonth() {
      let sum = 0;
@@ -65,11 +65,11 @@ let getStatusIncome = function () {
     if (budgetDay >= 1200) {
         return ('У Вас высокий уровень дохода');
     }
-    else if (budgetDay < 1200 && budgetDay > 600) {
+    else if (budgetDay < 1200 && budgetDay >= 600) {
         return ('У Вас средний уровень дохода');
     }
     else if (budgetDay < 600 && budgetDay >=0) {
-        return ('У Вас средний уровень дохода');
+        return ('У Вас низкий уровень дохода');
     }
     else {
         return ('Что то пошло не так');
