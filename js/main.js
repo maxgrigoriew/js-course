@@ -36,8 +36,8 @@ let appData = {
         return sum;
     },
     getAccumulateMonth: function () {
-        return money - expensesMonth;
-    }
+        return money - appData.getExpensesMonth;
+    },
     getTargetMonth: function () {
         let purpose = Math.floor(mission / appData.getAccumulateMonth);
         if (purpose < 0) {
@@ -61,6 +61,8 @@ let appData = {
 
 
 }
+let budgetDay = Math.floor(appData.getAccumulateMonth / 30);
+
 
 let addExpenses = String(prompt('Перечислите Вашы возможные расходы за расчитываемый период через запятую. Пример: Квартплата, проездной, кредит'));
 
@@ -82,7 +84,6 @@ appData.getAccumulateMonth();
 
 appData.getStatusIncome();
 
-let budgetDay = Math.floor(appData.getAccumulateMonth / 30);
 
 
 
