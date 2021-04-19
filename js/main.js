@@ -39,7 +39,7 @@ let appData = {
         return money - expensesMonth;
     }
     getTargetMonth: function () {
-        let purpose = Math.floor(mission / appData.getTargetMonth);
+        let purpose = Math.floor(mission / appData.getAccumulateMonth);
         if (purpose < 0) {
             return 'Ваша цель не будет достигнута';
         } else {
