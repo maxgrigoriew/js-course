@@ -1,5 +1,32 @@
 'use strict';
 
+let bunnonStart = document.getElementById('start');
+let buttonIncome = document.getElementsByClassName('income_add');
+let buttonExpenses = document.getElementsByClassName('expenses_add');
+let checkboxDeposit = document.querySelector('#deposit-check');
+let additionalIncomeItem1 = document.querySelectorAll('.additional_income-item')[0];
+let additionalIncomeItem2 = document.querySelectorAll('.additional_income-item')[1];
+let budgetDayValue = document.getElementsByClassName('budget_day-value');
+let expensesMonthValue = document.getElementsByClassName('expenses_month-value');
+let additonalIncomeValue = document.getElementsByClassName('additional_income-value');
+let additonalExpensesValue = document.getElementsByClassName('additional_expenses-value');
+let incomePeriodValue = document.getElementsByClassName('income_period-value');
+let targetMonthValue = document.getElementsByClassName('target_month-value');
+
+console.log(bunnonStart);
+console.log(buttonIncome);
+console.log(buttonExpenses);
+console.log(checkboxDeposit);
+console.log(additionalIncomeItem1);
+console.log(additionalIncomeItem2);
+console.log(budgetDayValue);
+console.log(expensesMonthValue);
+console.log(additonalIncomeValue);
+console.log(additonalExpensesValue);
+console.log(incomePeriodValue);
+console.log(targetMonthValue);
+
+
 const isNumber = function (n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 };
@@ -136,5 +163,3 @@ for (let item in appData) {
 }
 
 console.log(appData.addExpenses.join(', ').split(/\s+/).map(word => word[0].toUpperCase() + word.substring(1)).join(' '));
-// console.log(appData.percentDeposit, appData.moneyDeposit, appData.calcSavedMoney());
-// console.log(appData.income);
