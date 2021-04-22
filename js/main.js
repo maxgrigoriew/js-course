@@ -51,7 +51,6 @@ let appData = {
 
         appData.deposit = confirm('Есть ли у Вас депозит в банке?');
 
-
         for (let i = 0; i < 2; i++) {
             let expensesName;
             do {
@@ -67,7 +66,6 @@ let appData = {
             appData.expenses[expensesName] = +expensesValue;
         }
     },
-
 
     getExpensesMonth: function () {
         let sum = 0;
@@ -104,6 +102,7 @@ let appData = {
             console.log('Что то пошло не так');
         }
     },
+
     getInfoDeposit: function () {
         if (appData.deposit) {
             do {
@@ -116,6 +115,7 @@ let appData = {
             while (!isNumber(appData.moneyDeposit));
         };
     },
+
     calcSavedMoney: function () {
         return appData.budgetMonth * appData.period;
     }
@@ -129,15 +129,12 @@ appData.getStatusIncome();
 appData.getInfoDeposit();
 
 
-console.log('expensesMonth: ', appData.expensesMonth);
-console.log('Наша программа включает в себя данные:');
-
 for (let item in appData) {
     console.log('Свойство: ', item, ' Значение: ', appData[item]);
 }
 
-// console.log(appData.income);
-// console.log(appData.percentDeposit, appData.moneyDeposit, appData.calcSavedMoney());
+console.log('expensesMonth: ', appData.expensesMonth);
+console.log('Наша программа включает в себя данные:');
 console.log(appData.addExpenses.join(', ').split(/\s+/).map(word => word[0].toUpperCase() + word.substring(1)).join(' '));
-
-
+// console.log(appData.percentDeposit, appData.moneyDeposit, appData.calcSavedMoney());
+// console.log(appData.income);
