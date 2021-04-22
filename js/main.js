@@ -129,12 +129,12 @@ appData.getStatusIncome();
 appData.getInfoDeposit();
 
 
+console.log('expensesMonth: ', appData.expensesMonth);
+console.log('Наша программа включает в себя данные:');
 for (let item in appData) {
     console.log('Свойство: ', item, ' Значение: ', appData[item]);
 }
 
-console.log('expensesMonth: ', appData.expensesMonth);
-console.log('Наша программа включает в себя данные:');
 console.log(appData.addExpenses.join(', ').split(/\s+/).map(word => word[0].toUpperCase() + word.substring(1)).join(' '));
 // console.log(appData.percentDeposit, appData.moneyDeposit, appData.calcSavedMoney());
 // console.log(appData.income);
