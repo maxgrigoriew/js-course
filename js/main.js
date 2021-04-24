@@ -1,16 +1,43 @@
 'use strict';
 
-let bunnonStart = document.getElementById('start');
-let buttonIncome = document.getElementsByClassName('income_add');
-let buttonExpenses = document.getElementsByClassName('expenses_add');
-let checkboxDeposit = document.querySelector('#deposit-check');
-let additionalIncomeItem1 = document.querySelectorAll('.additional_income-item')[0];
-let additionalIncomeItem2 = document.querySelectorAll('.additional_income-item')[1];
+let start = document.getElementById('start');
+let btnPlus = document.getElementsByTagName('button');
+let incomePlus = btnPlus[0];
+let expensesPlus = btnPlus[1];
+let additionalIncomeItems = document.querySelectorAll('.additional_income-item');
+let depositCheckbox = document.querySelector('#deposit-check');
+let budgetDayValue = document.getElementsByClassName('result-total')[1];
 let budgetDayValue = document.getElementsByClassName('budget_day-value');
+let budgetMonthValue = document.querySelector('.budget_month-value');
+let expensesMonthValue = document.getElementsByClassName('result-total')[2];
 let expensesMonthValue = document.getElementsByClassName('expenses_month-value');
 let additonalIncomeValue = document.getElementsByClassName('additional_income-value');
+let additionalIncomeItem1 = document.querySelectorAll('.additional_income-item')[0];
+let additionalIncomeItem2 = document.querySelectorAll('.additional_income-item')[1];
 let additonalExpensesValue = document.getElementsByClassName('additional_expenses-value');
+let additionalIncomeValue = document.getElementsByClassName('result-total')[3];
+let additionalExpensesValue = document.getElementsByClassName('result-total')[4];
 let incomePeriodValue = document.getElementsByClassName('income_period-value');
+let targetMonthValue = document.getElementsByClassName('result-total')[6];
+let salaryAmount = document.querySelector('.salary-amount');
+let incomeTitle = document.querySelector('.income-title');
+let expensesTitle = document.querySelector('.expenses-title');
+let expensesItems = document.querySelectorAll('.expenses-items');
+let periodSelect = document.querySelector('.period-select');
+
+let additionalExpensesItem = document.querySelector('.additional_expenses-item');
+let targetAmount = document.querySelector('.target-amount');
+let periodAmount = document.querySelector('.period-amount');
+let checkDeposit = document.querySelector('#deposit-check');
+
+let incomeItems = document.querySelectorAll('.income-items');
+
+let buttonIncomeAdd = document.getElementsByTagName('button')[0];
+let buttonExpensesAdd = document.getElementsByTagName('button')[1];
+
+let incomePeriodValue = document.getElementsByClassName('result-total')[5];
+
+
 let targetMonthValue = document.getElementsByClassName('target_month-value');
 
 console.log(bunnonStart);
