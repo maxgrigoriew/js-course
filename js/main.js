@@ -68,6 +68,9 @@ let appData = {
         additionalIncomeValue.value = appData.addIncome.join(',');
         targetMonthValue.value = Math.ceil(appData.getTargetMonth());
         incomePeriodValue.value = appData.calcPeriod();
+        periodSelect.addEventListener('input', function () {
+            incomePeriodValue.value = appData.calcPeriod();
+        })
     },
     // добавляющееся поле при клике на крестик
     addExpensesBlock: function () {
@@ -90,17 +93,18 @@ let appData = {
             }
         });
     },
+    // поле дополнительный доход
     getIncome: function () {
         incomeItems.forEach(function (item) {
             let incomeTitle = item.querySelector('.income-title').value;
-                console.log(incomeTitle);
+            console.log(incomeTitle);
             let incomeAmount = item.querySelector('.income-amount').value;
             console.log(incomeAmount);
             
             if (incomeTitle !== '' && incomeAmount !== '') {
                 appData.income[incomeTitle] = incomeAmount;
             }
-        })
+        });
         // перебираем все значения дополнительных заработков и сумируем значения
         for (let key in appData.income){
             appData.incomeMonth += +appData.income[key];
@@ -178,7 +182,7 @@ let appData = {
                 appData.moneyDeposit = prompt('Какая сумма задожена?');
             }
             while (!isNumber(appData.moneyDeposit));
-        };
+        }
     },
     // селект расчета периода
     calcPeriod: function () {
@@ -190,6 +194,7 @@ function disabledTrue() {
     star.style.opacity = 0.1;
     star.style.cursor = 'default';
 };
+
 disabledTrue();
 
 function disabledFalse() {
@@ -197,13 +202,13 @@ function disabledFalse() {
     star.style.cursor = '';
 };
 
-
 star.addEventListener('click', appData.start);
 expensesPlus.addEventListener('click', appData.addExpensesBlock);
 incomePlus.addEventListener('click', appData.getIncomeBlock);
 periodSelect.addEventListener('input', function() {
     periodAmount.textContent = periodSelect.value;
 });
+
 salaryAmount.addEventListener('input', function() {
     if (salaryAmount.value) {
         return  disabledFalse();
