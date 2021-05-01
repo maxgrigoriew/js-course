@@ -141,7 +141,7 @@ let appData = {
         resultInputs.forEach(item => {
             item.value = '';
         });
-     },
+    },
     // выводит результаты в поля
     showResult: function () {
         budgetMonthValue.value = this.budgetMonth;
@@ -166,6 +166,13 @@ let appData = {
         if (expensesItems.length === 3) {
             expensesPlus.style.display = 'none';
         }
+    },
+    
+    resetExpensesInputs: function (cloneExpensesItems) {
+        const cloneExpensesInputs = cloneExpensesItems.querySelectorAll('input');
+        cloneExpensesInputs.forEach((item) => {
+             item.value = '';
+        });
     },
     // поле обязательные расходы
     getExpenses: function () {
