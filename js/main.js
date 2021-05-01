@@ -101,11 +101,25 @@ let appData = {
         appData.unsetDisabled(item);
         });
         
+        let expensesItem = document.querySelectorAll('.expenses-items input');
+        expensesItem.forEach(item => {
+            appData.unsetDisabled(item);
+        });
+
+        let incomeItem = document.querySelectorAll('.income-items input');
+            incomeItem.forEach(item => {
+        appData.unsetDisabled(item);
+            });
+        
         appData.unsetDisabled(btnPlus);
         appData.unsetDisabled(incomePlus);
+        appData.unsetDisabled(incomeItem);
+        appData.unsetDisabled(expensesItem);
         appData.unsetDisabled(expensesPlus);
         appData.unsetDisabled(depositCheckbox);
         appData.unsetDisabled(periodSelect);
+        
+      
     },
     
     setDisabled: function (element) {
