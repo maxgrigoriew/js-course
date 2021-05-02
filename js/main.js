@@ -70,6 +70,7 @@ let appData = {
     reset: function () {
         this.unBlockItems();
         this.cleanInputs();
+        this.delAddInputs();
         startBtn.style.display = 'block';
         cancelBtn.style.display = 'none';
     },
@@ -89,11 +90,11 @@ let appData = {
         appData.setDisabled(item);
         });
         
-        appData.setDisabled(btnPlus);
-        appData.setDisabled(incomePlus);
-        appData.setDisabled(expensesPlus);
-        appData.setDisabled(depositCheckbox);
-        appData.setDisabled(periodSelect);
+        this.setDisabled(btnPlus);
+        this.setDisabled(incomePlus);
+        this.setDisabled(expensesPlus);
+        this.setDisabled(depositCheckbox);
+        this.setDisabled(periodSelect);
     },
 
     unBlockItems: function () {
@@ -107,17 +108,17 @@ let appData = {
         });
 
         let incomeItem = document.querySelectorAll('.income-items input');
-            incomeItem.forEach(item => {
-        appData.unsetDisabled(item);
-            });
+        incomeItem.forEach(item => {
+            appData.unsetDisabled(item);
+        });
         
-        appData.unsetDisabled(btnPlus);
-        appData.unsetDisabled(incomePlus);
-        appData.unsetDisabled(incomeItem);
-        appData.unsetDisabled(expensesItem);
-        appData.unsetDisabled(expensesPlus);
-        appData.unsetDisabled(depositCheckbox);
-        appData.unsetDisabled(periodSelect);
+        this.unsetDisabled(btnPlus);
+        this.unsetDisabled(incomeItem);
+        this.unsetDisabled(expensesItem);
+        this.unsetDisabled(expensesPlus);
+        this.unsetDisabled(depositCheckbox);
+        this.unsetDisabled(incomePlus);
+        this.unsetDisabled(periodSelect);
         
       
     },
@@ -141,6 +142,57 @@ let appData = {
         resultInputs.forEach(item => {
             item.value = '';
         });
+    },
+    
+    delAddInputs: function () {
+    if (expensesItems.length > 1) {
+      const expensesItem = expensesItems[0].cloneNode(true);
+      this.resetExpensesInputs(expensesItem);
+
+      expensesItems.forEach(item => {
+        item.parentNode.removeChild(item);
+      });
+
+      expensesPlus.parentNode.insertBefore(expensesItem, expensesPlus);
+      expensesItems = document.querySelectorAll('.expenses-items');
+
+      if (expensesPlus.hasAttribute('style')) {
+        expensesPlus.style.display = 'block';
+      }
+
+    }
+
+    if (incomeItems.length > 1) {
+      const incomeItem = incomeItems[0].cloneNode(true);
+      this.resetIncomeInputs(incomeItem);
+
+      incomeItems.forEach(item => {
+        item.parentNode.removeChild(item);
+      });
+
+      incomePlus.parentNode.insertBefore(incomeItem, incomePlus);
+      incomeItems = document.querySelectorAll('.income-items');
+
+      if (incomePlus.hasAttribute('style')) {
+        incomePlus.style.display = 'block';
+      }
+    }
+  },
+    
+    resetExpensesInputs: function (cloneExpensesItems) {
+        const cloneExpensesInputs = cloneExpensesItems.querySelectorAll('input');
+
+        cloneExpensesInputs.forEach((item) => {
+            item.value = '';
+        });
+    },
+
+    resetIncomeInputs: function (cloneIncomeItems) {
+    const cloneIncomeInputs = cloneIncomeItems.querySelectorAll('input');
+
+    cloneIncomeInputs.forEach((item) => {
+    item.value = '';
+    });
     },
     // выводит результаты в поля
     showResult: function () {
