@@ -15,21 +15,3 @@ console.log(addExpenses.toLowerCase().split(', '));
 let budgetDay = Math.floor(money / 30);
 console.log(budgetDay);
 
-
-
-
-
-
-
-
-// let str = 'hello my frends!';
-
-// console.log(str.length);
-
-// console.log(str.toUpperCase());
-// console.log(str.toLowerCase());
-// console.log(str[0]);
-// console.log(str.substring(1, 15));
-// console.log(str.slice(-112));
-// console.log(str.split(' '));
-// console.log(addExpenses.split(', '));
