@@ -58,7 +58,7 @@ class AppData {
         this.getExpInc();
         this.getExpensesMonth();
         this.getAddExpInc();
-        this.getIncome();
+        // this.getIncome();
         this.getBudget();
         this.showResult();
 
@@ -95,7 +95,7 @@ class AppData {
         this.setDisabled(incomePlus);
         this.setDisabled(expensesPlus);
         this.setDisabled(depositCheckbox);
-        this.setDisabled(periodSelect);
+        // this.setDisabled(periodSelect);
     };
 
     unBlockItems() {
@@ -119,7 +119,7 @@ class AppData {
         this.unsetDisabled(expensesPlus);
         this.unsetDisabled(depositCheckbox);
         this.unsetDisabled(incomePlus);
-        this.unsetDisabled(periodSelect);
+        // this.unsetDisabled(periodSelect);
     };
 
     setDisabled(element) {
@@ -223,33 +223,6 @@ class AppData {
             item.value = '';
         });
     };
-    // поле обязательные расходы
-    getExpenses() {
-        expensesItems.forEach((item) => {
-            // поле наименование
-            const itemExpenses = item.querySelector('.expenses-title').value;
-            // поле сумма 
-            const cashExpenses = item.querySelector('.expenses-amount').value;
-            if (itemExpenses !== '' && cashExpenses !== '') {
-                appData.expenses[itemExpenses] = cashExpenses;
-            }
-        });
-    };
-    // поле дополнительный доход
-    getIncome() {
-        incomeItems.forEach((item) => {
-            const incomeTitle = item.querySelector('.income-title').value;
-            const incomeAmount = item.querySelector('.income-amount').value;
-
-            if (incomeTitle !== '' && incomeAmount !== '') {
-                this.income[incomeTitle] = incomeAmount;
-            }
-        });
-        // перебираем все значения дополнительных заработков и сумируем значения
-        for (const key in this.income) {
-            this.incomeMonth += +this.income[key];
-        }
-    };
 
     getExpInc() {
 
@@ -268,7 +241,6 @@ class AppData {
         for (const key in this.income) {
             this.incomeMonth += +this.income[key];
         };
-
     };
 
     getIncomeBlock() {
@@ -280,7 +252,6 @@ class AppData {
         }
     };
 
-    // //////////////////////// Не смог сделать универсальный foreach///////////////////
     getAddExpInc() {
         const addExpenses = additionalExpensesItem.value.split(',');
         addExpenses.forEach((item) => {
