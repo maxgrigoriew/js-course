@@ -58,7 +58,6 @@ class AppData {
         this.getExpInc();
         this.getExpensesMonth();
         this.getAddExpInc();
-        // this.getIncome();
         this.getBudget();
         this.showResult();
 
@@ -72,10 +71,19 @@ class AppData {
         this.unBlockItems();
         this.cleanInputs();
         this.delAddInputs();
-        startBtn.style.display = 'block';
+        this.budget = 0;
+        this.income = {};
+        this.incomeMonth = 0;
+        this.expenses = {};
+        this.expensesMonth = 0;
+        this.budgetMonth = 0;
+        this.addIncome = [];
+        this.addExpenses = [];
+        
         cancelBtn.style.display = 'none';
+        startBtn.style.display = 'block';
     };
-
+    
     blockItems() {
         inputs.forEach(function (item) {
             appData.setDisabled(item);
@@ -95,7 +103,6 @@ class AppData {
         this.setDisabled(incomePlus);
         this.setDisabled(expensesPlus);
         this.setDisabled(depositCheckbox);
-        // this.setDisabled(periodSelect);
     };
 
     unBlockItems() {
@@ -119,7 +126,7 @@ class AppData {
         this.unsetDisabled(expensesPlus);
         this.unsetDisabled(depositCheckbox);
         this.unsetDisabled(incomePlus);
-        // this.unsetDisabled(periodSelect);
+
     };
 
     setDisabled(element) {
@@ -362,7 +369,3 @@ const appData = new AppData();
 
 appData.disabledTrue();
 appData.addEventListeners();
-
-
-
-let qwer = new AppData;
