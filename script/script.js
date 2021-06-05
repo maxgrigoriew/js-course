@@ -1,186 +1,156 @@
 window.addEventListener('DOMContentLoaded', function () {
-  'use strict';
 
-  const addZero = (number) => {
-    if (number < 10) return ('0' + number);
-    else return number;
-  };
 
-  // Animation
-  const popupOpenAnimation = () => {
-    const popup = document.querySelector('.popup-content');
-    let opacity = 0;
-    let opacityBg = 0;
-    let animationId;
+	let buttons = document.querySelectorAll('.buttons');
+	const content = document.querySelector('.header__content-number');
+	const addButton = document.querySelector('.add-button');
+	const headerButtons = document.querySelector('.header__buttons') 
+	
+	/*
+	// функуия для вставки текста кнопки в блок контента
+	const changeText = (element) => {
+		content.textContent = element.textContent
+	}
+	// фдьтернатива с for
+	for (let i = 0; i < buttons.length; i++)
+		buttons[i].addEventListener('click', () => {
+			changeText(buttons[i])
+		});
+	
+	// фдьтернатива с foreach
+	buttons.forEach((elem) => {
+		elem.addEventListener('click', () => {
+			changeText(elem)
+		})
+	})
+	
+	// сщздание новой кнопки
+	const getButton = function() {
+		const newButton = buttons[2].cloneNode()
+		let textButton = buttons.length + 1
+		if (textButton < 10){
+			textButton = `0${textButton}`;
+		}
+		
+		newButton.textContent = textButton
+		headerButtons.appendChild(newButton)
+		buttons = document.querySelectorAll('.buttons');
+		
+		// повесили событие для новых кнопок , чтобы отображался контент
+		newButton.addEventListener('click', () => {
+			changeText(newButton)
+		})
+		
+	}
+	// добавление кнопки при клике
+	addButton.addEventListener('click', getButton)
+*/
+	
+	
+		// диспользование event.target(это еще не делегирование т к обработчики событий все еще имеются)
+	/*
+	const changeText = (event) => {
+		
+		content.textContent = event.target.textContent
+		console.log('target.textContent: ', event.target.textContent);
+	}
 
-    popup.parentNode.style.backgroundColor = `rgba(0,0,0,0)`;
-    popup.style.opacity = opacity;
+	buttons.forEach((elem) => {
+		elem.addEventListener('click', changeText)
+	})
+	
+	const getButton = function() {
+		const newButton = buttons[2].cloneNode()
+		let textButton = buttons.length + 1
+		if (textButton < 10){
+			textButton = `0${textButton}`;
+		}
+		
+		newButton.textContent = textButton
+		headerButtons.appendChild(newButton)
+		buttons = document.querySelectorAll('.buttons');
+		
+		// повесили событие для новых кнопок , чтобы отображался контент
+		newButton.addEventListener('click', changeText)
+		
+	}
+	
+	addButton.addEventListener('click', getButton)
+*/
+	
+	
+	
+	
+	// Делегирование
+	
+	
+	const changeText = (event) => {
+		
+		content.textContent = event.target.textContent
+	}
 
-    // Element's animation
-    const animate = () => {
-      if (opacity <= 1) {
-        opacity += 0.03;
-        opacityBg += 0.015;
+	// buttons.forEach((elem) => {
+	// 	elem.addEventListener('click', changeText)
+	// })
+	
+	const getButton = function() {
+		const newButton = buttons[2].cloneNode()
+		let textButton = buttons.length + 1
+		if (textButton < 10){
+			textButton = `0${textButton}`;
+		}
+		
+		newButton.textContent = textButton
+		headerButtons.appendChild(newButton)
+		buttons = document.querySelectorAll('.buttons');
+	}
+	
+	addButton.addEventListener('click', getButton)
+	
+	// тут в отличие от предыдущих примеров мы взяли родителя кнопок и при клике на пространство в нем создали условия: если мы кликаем на поустое место в обертке то ничего не происходит., а если на кнопки с тегом button, то вызываем функцию changeTet и вставляем соответствующий текст кнопки()
+	
+	// headerButtons.addEventListener('click', () => {
+	// 	console.log(event.target);
+	// 	if (event.target.tagName === 'BUTTON') {
+		// 		changeText(event)
+	// 	}
+	
+	// })
+	
+	
+	// можно наоборот исключать в условии кнопки и прописывать return
+	
+	// headerButtons.addEventListener('click', () => {
+	// 	if (event.target.tagName !== 'BUTTON') {
+	// 		return
+	// 	}
+	// 		changeText(event)
+	// })
+	
+	// textContent
+	// headerButtons.addEventListener('click', () => {
+	// 	if (event.target.tagName !== 'BUTTON') {
+	// 		return
+	// 	}
+	// 		changeText(event)
+	// })
+	
+	// textContain
+	// headerButtons.addEventListener('click', () => {
+	// 	if (event.target.classList.contains('buttons')) {
+	// 		changeText(event)
+	// 	}
+	// })
+	
+	// target.matches
+	headerButtons.addEventListener('click', () => {
+		if (event.target.matches('.buttons')) {
+			changeText(event)
+		}
+	})
+	// также можно добавлять условия исключающие определенные кнопки. это можно сделать например с добавлением классов 
+	
 
-        popup.style.opacity = opacity;
-        popup.parentNode.style.backgroundColor = `rgba(0,0,0,${opacityBg})`;
 
-        animationId = requestAnimationFrame(animate);
-      } else {
-        cancelAnimationFrame(animationId);
-        popup.style.opacity = 1;
-        popup.parentNode.style.backgroundColor = `rgba(0,0,0,0.5)`;
-      }
-    };
 
-    animationId = requestAnimationFrame(animate);
-  };
-
-  const popupCloseAnimation = () => {
-    const popup = document.querySelector('.popup-content');
-    let opacity = 1;
-    let opacityBg = 0.5;
-    let animationId;
-
-    // Element's animation
-    const animate = () => {
-      if (opacity >= 0) {
-        opacity -= 0.03;
-        opacityBg -= 0.015;
-
-        popup.style.opacity = opacity;
-        popup.parentNode.style.backgroundColor = `rgba(0,0,0,${opacityBg})`;
-
-        animationId = requestAnimationFrame(animate);
-      } else {
-        cancelAnimationFrame(animationId);
-        popup.parentNode.style.display = 'none';
-      }
-    };
-
-    animationId = requestAnimationFrame(animate);
-  };
-
-  // Timer
-  const timer = (deadline) => {
-    // DOM-elements
-    const timerSeconds = document.querySelector('#timer-seconds');
-    const timerMinutes = document.querySelector('#timer-minutes');
-    const timerHours = document.querySelector('#timer-hours');
-    const timerDays = document.querySelector('#timer-days');
-
-    // Timer's logic
-    const getTimerRemainder = () => {
-        const dateStop = new Date(deadline).getTime();
-        let dateNow = new Date().getTime();
-
-        let timerRemainder = (dateStop - dateNow) / 1000;
-        let seconds = Math.floor(timerRemainder % 60);
-        let minutes = Math.floor((timerRemainder / 60) % 60);
-        let hours = Math.floor((timerRemainder / 60 / 60) % 24);
-        let days = Math.floor(timerRemainder / 60 / 60 / 24);
-
-        return {
-        timerRemainder,
-        seconds,
-        minutes,
-        hours,
-        days
-        };
-    };
-
-    let idUpdateTimer = 0;
-
-    const updateTimer = () => {
-        let timerResult = getTimerRemainder();
-
-        timerSeconds.textContent = addZero(timerResult.seconds);
-        timerMinutes.textContent = addZero(timerResult.minutes);
-        timerHours.textContent = addZero(timerResult.hours);
-        timerDays.textContent = addZero(timerResult.days);
-
-        if (timerResult.timerRemainder < 0) {
-            clearInterval(idUpdateTimer);
-
-            timerSeconds.textContent = '00';
-            timerMinutes.textContent = '00';
-            timerHours.textContent = '00';
-            timerDays.textContent = '00';
-        }
-    };
-
-    updateTimer();
-
-    idUpdateTimer = setInterval(updateTimer, 1000);
-  };
-
-  // Menu
-  const toggleMenu = () => {
-    const menuBtn = document.querySelector('.menu');
-    const menuList = document.querySelector('menu');
-    const closeBtn = document.querySelector('.close-btn');
-    const menuLinks = menuList.querySelectorAll('li>a');
-    const headerLink = document.querySelector('a[href="#service-block"]');
-
-    const handlerMenu = () => {
-        menuList.classList.toggle('active-menu');
-    };
-
-    const smoothScroll = (item) => {
-        const element = document.querySelector(item.getAttribute('href')); 
-
-        element.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
-    };
-
-    menuBtn.addEventListener('click', handlerMenu);
-    closeBtn.addEventListener('click', handlerMenu);
-    headerLink.addEventListener('click', (event) => {
-        event.preventDefault();
-
-        document.querySelector('#service-block').scrollIntoView({
-            behavior: 'smooth',
-            block: 'start',
-        });
-    });
-
-    menuLinks.forEach(item => item.addEventListener('click', (event) => {
-      event.preventDefault();
-
-      handlerMenu();
-      smoothScroll(item);
-    }));
-  };
-
-  // PopUp
-    const togglePopUp = () => {
-    const popup = document.querySelector('.popup');
-    const popupOpenBtn = document.querySelectorAll('.popup-btn');
-    const popupCloseBtn = document.querySelectorAll('.popup-close');
-
-    popupOpenBtn.forEach((item) =>
-      item.addEventListener('click', () => {
-        popup.style.display = 'block';
-        if (screen.width >= 768) popupOpenAnimation();
-      })
-    );
-
-    popupCloseBtn.forEach((item) =>
-      item.addEventListener('click', () => {
-        if (screen.width >= 768) popupCloseAnimation();
-        else {
-          popup.style.display = 'none';
-        }
-      })
-    );
-  };
-
-  const deadline = new Date(' 10 juny 2021');
-  timer(deadline);
-
-  toggleMenu();
-
-  togglePopUp();
 });
